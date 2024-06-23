@@ -16,7 +16,7 @@ def load_data(filepath):
 
 def preprocess_data(df):
     df['message'] = df['message'].apply(lambda x: x.lower())
-    df['message'] = df['message'].apply(lambda x: re.findall(r"[a-z']+", x))
+    df['message'] = df['message'].apply(lambda x: re.findall("[a-z']+", x))
     return df
 
 

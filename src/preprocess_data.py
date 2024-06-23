@@ -1,24 +1,33 @@
 import re
 import pandas as pd
+import random
 
 
-from sklearn.model_selection import train_test_split
+def read_file(filepath):
+    print(f"Reading {filepath}...")
+    messages = []
+    with open(filepath, encoding="utf-8") as file:
+        for line in file.readlines():
+            is_spam, message = line.split("\t")
+            is_spam = 1 if is_spam == "spam" else 0
+            message = message.strip()
+            messages.append((message, is_spam))
+    return messages
 
 
-def load_data(filepath):
-    data = []
-    with open(filepath, 'r', encoding='utf-8') as file:
-        for line in file:
-            label, message = line.strip().split('\t')
-            data.append((label, message))
-    return pd.DataFrame(data, columns=['label', 'message'])
+def preprocess_message(message):
+    message = message.lower()
+    words = re.findall("[a-z']+", message)
+    return words
 
 
-def preprocess_data(df):
-    df['message'] = df['message'].apply(lambda x: x.lower())
-    df['message'] = df['message'].apply(lambda x: re.findall("[a-z']+", x))
-    return df
-
-
-def split_data(df, test_size=0.2):
-    return train_test_split(df, test_size=test_size, random_state=42, stratify=df['label'])
+def split_data(messages, ratio=0.8):
+    print("Splitting data...")
+    random.seed(2)
+    random.shuffle(messages)
+    train_num = round(0.8 * len(messages))
+    train_X = [message[0] for message in messages[:train_num]]
+    train_y = [message[1] for message in messages[:train_num]]
+    test_X = [message[0] for message in messages[train_num:]]
+    test_y = [message[1] for message in messages[train_num:]]
+    return (train_X, train_y, test_X, test_y)

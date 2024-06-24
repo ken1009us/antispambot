@@ -66,7 +66,7 @@ Confusion Matrix: (149, 7, 952, 7)
 
 - Compare the length distribution of spam vs non-spam messages
 
-![image](https://github.com/ken1009us/antispambot/blob/master/img/messagelength.png "message length")
+![image](https://github.com/ken1009us/antispambot/blob/main/img/messagelength.png "message length")
 
 2. Word Cloud
 
@@ -74,12 +74,12 @@ Confusion Matrix: (149, 7, 952, 7)
 
 Spam word cloud:
 
-![image](https://github.com/ken1009us/antispambot/blob/master/img/spamwordcloud.png "spam word cloud")
+![image](https://github.com/ken1009us/antispambot/blob/main/img/spamwordcloud.png "spam word cloud")
 
 Non-spam word cloud:
 
 
-![image](https://github.com/ken1009us/antispambot/blob/master/img/nonspamwordcloud.png "non-spam word cloud")
+![image](https://github.com/ken1009us/antispambot/blob/main/img/nonspamwordcloud.png "non-spam word cloud")
 
 
 ## How to Use

@@ -60,6 +60,28 @@ Recall: 95.51%
 Confusion Matrix: (149, 7, 952, 7)
 ```
 
+## Visualizations
+
+1. Distribution of Message Lengths:
+
+- Compare the length distribution of spam vs non-spam messages
+
+![image](https://github.com/ken1009us/antispambot/blob/master/img/messagelength.png "message length")
+
+2. Word Cloud
+
+- Visualize the most common words in spam and non-spam messages
+
+Spam word cloud:
+
+![image](https://github.com/ken1009us/antispambot/blob/master/img/spamwordcloud.png "spam word cloud")
+
+Non-spam word cloud:
+
+
+![image](https://github.com/ken1009us/antispambot/blob/master/img/nonspamwordcloud.png "non-spam word cloud")
+
+
 ## How to Use
 
 - Preprocess Data

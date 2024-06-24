@@ -1,5 +1,30 @@
 from src import preprocess_data, train, evaluate
 from src.train import NaiveBayesClassifier
+from wordcloud import WordCloud
+
+import matplotlib.pyplot as plt
+
+
+def plot_message_length_distribution(X, y):
+    spam_lengths = [len(msg.split()) for msg, label in zip(X, y) if label == 1]
+    non_spam_lengths = [len(msg.split()) for msg, label in zip(X, y) if label == 0]
+
+    plt.figure(figsize=(10, 7))
+    plt.hist(spam_lengths, bins=50, alpha=0.5, label='Spam')
+    plt.hist(non_spam_lengths, bins=50, alpha=0.5, label='Non-Spam')
+    plt.xlabel('Message Length (words)')
+    plt.ylabel('Frequency')
+    plt.title('Distribution of Message Lengths')
+    plt.legend()
+    plt.show()
+
+
+def create_wordcloud(text):
+    wordcloud = WordCloud(width=800, height=400, background_color ='white').generate(text)
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis('off')
+    plt.show()
 
 if __name__ == "__main__":
     filepath = 'data/raw/SMSSpamCollection.txt'
@@ -27,3 +52,14 @@ if __name__ == "__main__":
     print(f'Precision: {precision:.2%}')
     print(f'Recall: {recall:.2%}')
     print('Confusion Matrix:', confusion_matrix)
+
+# =========Visualization===========
+
+    # spam_text = ' '.join([msg for msg, label in zip(train_X, train_y) if label == 1])
+    # non_spam_text = ' '.join([msg for msg, label in zip(train_X, train_y) if label == 0])
+
+    # create_wordcloud(spam_text)
+    # create_wordcloud(non_spam_text)
+
+    # plot_message_length_distribution(train_X, train_y)
+

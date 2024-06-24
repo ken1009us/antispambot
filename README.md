@@ -138,3 +138,6 @@ By leveraging Bayes' Theorem, baseball teams can make more informed decisions an
 3. Improve Naive Bayes Text classifier using Laplace Smoothing, CHIRAG GOYAL, Available from: https://www.analyticsvidhya.com/blog/2021/04/improve-naive-bayes-text-classifier-using-laplace-smoothing:
 
 4. Bayes’ Theorem in email spam filtering, Cornell University, Available from: https://blogs.cornell.edu/info2040/2018/10/27/bayes-theorem-in-email-spam-filtering/
+
+5. “Demystifying Naïve Bayes: Log Probability and Laplace Smoothing”, ajaymehta, Available from: https://medium.com/@dancerworld60/demystifying-na%C3%AFve-bayes-log-probability-and-laplace-smoothing-d6da61b0e70b
+

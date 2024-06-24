@@ -1,7 +1,41 @@
+from .preprocess_data import preprocess_message
+from sklearn.model_selection import KFold
+from sklearn.metrics import precision_score, recall_score
+
+import numpy as np
 import math
 
+def evaluate_classifier(k, training_data, validation_data):
+    classifier = NaiveBayesClassifier(k=k)
+    classifier.train(training_data)
+    validation_X, validation_y = zip(*validation_data)
+    predictions = [classifier.predict(x) for x in validation_X]
 
-from .preprocess_data import preprocess_message
+    precision = precision_score(validation_y, predictions)
+    recall = recall_score(validation_y, predictions)
+
+    return precision, recall
+
+def cross_validate_k(training_data, k_values, n_splits=5):
+    kf = KFold(n_splits=n_splits)
+    results = {k: [] for k in k_values}
+
+    for train_index, val_index in kf.split(training_data):
+        train_data = [training_data[i] for i in train_index]
+        val_data = [training_data[i] for i in val_index]
+
+        for k in k_values:
+            precision, recall = evaluate_classifier(k, train_data, val_data)
+            results[k].append((precision, recall))
+
+    avg_results = {k: (np.mean([x[0] for x in v]), np.mean([x[1] for x in v])) for k, v in results.items()}
+    return avg_results
+
+def find_best_k(training_data, k_values):
+    avg_results = cross_validate_k(training_data, k_values)
+    best_k = max(avg_results, key=lambda k: avg_results[k][0])
+    return best_k, avg_results[best_k]
+
 
 class NaiveBayesClassifier:
     def __init__(self, k=1.0):

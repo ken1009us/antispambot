@@ -46,6 +46,20 @@ Recall: 97.44%
 Confusion Matrix: (152, 46, 913, 4)
 ```
 
+## Improvement
+
+### Finding the optimal Laplace smoothing factor (k) using cross-validation
+
+In order to determine the optimal k value (Laplace smoothing factor) for my classifier, I try to use a method like cross-validation to evaluate the performance of different k values. This will help me choose the k value that yields the best performance on the dataset.
+
+```bash
+Best k value: 0.001
+Precision with best k: 91.81%, Recall with best k: 93.54%
+Precision: 95.51%
+Recall: 95.51%
+Confusion Matrix: (149, 7, 952, 7)
+```
+
 ## How to Use
 
 - Preprocess Data
